@@ -12,17 +12,20 @@ greetingApp.config(['$routeProvider',
     $routeProvider.
       when('/greeting', {
         templateUrl: 'partials/greeting.html',
-        controller: 'greetingCtrl'
+        controller: 'GreetingCtrl'
       }).
       when('/controller1', {
           templateUrl: 'partials/controller1.html',
-          controller: 'controller1Ctrl'
+          controller: 'Controller1Ctrl'
         }).
         when('/controller2', {
             templateUrl: 'partials/controller2.html',
-            controller: 'controller2Ctrl'
+            controller: 'Controller2Ctrl'
           }).
       otherwise({
+    	/* Any href/link that doesn't match the above list, e.g. /home will
+    	 * end up in here. 
+    	 * */
         redirectTo: '/index'
       });
   }]);

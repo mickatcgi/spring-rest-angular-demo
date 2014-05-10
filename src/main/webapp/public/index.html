@@ -5,6 +5,7 @@
     <meta content="Billybob" name="Author" />
     <title>Billybob McDuff</title>
 
+    <link rel="stylesheet" type="text/css" href="/resources/css/stylesheet.css" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
     <script type="text/javascript" src="/webjars/jquery/${jquery.version}/jquery.min.js"></script>
@@ -20,20 +21,37 @@
 
     <body>
     
-	    <h1>Mick's demo Spring REST app with Angular and inserted build properties</h1>
-	    <p>Using angularjs version: ${jquery.version}</p>
+	    <h1>Mick's demo Springboot REST app with AngularJs</h1>
+	    <ul>
+	      <li>Springboot Jar Build date: <span class="props">${build.date}</span></li>
+          <li>Springboot version: <span class="props">${spring-boot.version}</span></li>
+          <li>Spring version: <span class="props">${spring.version}</span></li>
+	      <li>Angularjs version: <span class="props">${angularjs.version}</span></li>
+          <li>JQuery version: <span class="props">${jquery.version}</span></li>
+          <li>Java version: <span class="props">${java.version}</span></li>
+	    </ul>
 	
-	    <div ng-controller="GreetingCtrl">
-	        <p>The ID is {{greeting.id}}</p>
-	        <p>The content is {{greeting.content}}</p>
-	    </div>    
-        <div ng-controller="Controller1Ctrl">
-            <p>The ID is {{controller1Data.id}}</p>
-            <p>The content is {{controller1Data.content}}</p>
-        </div>    
-        <div ng-controller="Controller2Ctrl">
-            <p>The ID is {{controller2Data.id}}</p>
-            <p>The content is {{controller2Data.content}}</p>
-        </div>    
+        <div>  
+            <h2>Click the following links to invoke Angular controllers and the 
+                corresponding Spring REST controllers</h2>          
+            <ul>         
+            <li><a href="#home">Home</a></li>
+            <li><a href="#greeting">Greeting</a></li>
+            <li><a href="#controller1">Controller1</a></li>             
+            <li><a href="#controller2">Controller2</a></li>              
+            </ul>             
+        </div>
+
+        <div ng-view>
+            <!-- Partials will be rendered here... -->
+        </div>
+
+        <footer>
+        <p>
+            &#160; &copy;
+            <a href="mailto:michael.gallagher@cgi.com?Subject=Who wrote this junk?" 
+              target="_top">Email: michael.gallagher@cgi.com</a>        
+        </p>
+        </footer>
     </body>
 </html>
