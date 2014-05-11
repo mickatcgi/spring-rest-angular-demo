@@ -26,6 +26,7 @@
 		<angular-file-upload.version>1.2.5</angular-file-upload.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
+		<micks-app-build-number>${buildNumber}</micks-app-build-number>
 	</properties>
 
 	<dependencies>
