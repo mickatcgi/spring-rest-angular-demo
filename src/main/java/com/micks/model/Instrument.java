@@ -12,13 +12,15 @@ import java.util.List;
  ***************************************************************/
 public class Instrument {
 
-    private final long id = 0;
+    private final long id;
+    private final String name = "Instrument";
     private final List<String> myStuff = new ArrayList<>();
     
     /***************************************************************
      * 
      ***************************************************************/
-    public Instrument() {
+    public Instrument(long id) {
+        this.id = id;
     }
 
     /***************************************************************
@@ -37,5 +39,12 @@ public class Instrument {
      ***************************************************************/
     public long getId() {
         return id;
+    }
+
+    /***************************************************************
+     * @return
+     ***************************************************************/
+    public String getName() {
+        return this.name;
     }
 }

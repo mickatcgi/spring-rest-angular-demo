@@ -4,13 +4,13 @@
 
 var greetingControllers = angular.module('greetingControllers', []);
 
-greetingControllers.controller('GreetingCtrl', [
+greetingControllers.controller('instrumentCtrl', [
 		'$scope',
 		'$http',
 		function($scope, $http) {
-			$http.get('http://localhost:8080/greeting.json').success(
+			$http.get('http://localhost:8080/instrument.json').success(
 					function(data) {
-						$scope.greeting = data;
+						$scope.instrument = data;
 					});
 		} ]);
 
@@ -24,12 +24,12 @@ greetingControllers.controller('workItemCtrl', [
 					});
 		} ]);
 
-greetingControllers.controller('Controller2Ctrl', [
+greetingControllers.controller('customerCtrl', [
 		'$scope',
 		'$http',
 		function($scope, $http) {
-			$http.get('http://localhost:8080/controller2.json').success(
+			$http.get('http://localhost:8080/customer.json').success(
 					function(data) {
-						$scope.controller2Data = data;
+						$scope.customer = data;
 					});
 		} ]);

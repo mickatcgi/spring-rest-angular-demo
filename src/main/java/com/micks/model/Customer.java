@@ -12,13 +12,15 @@ import java.util.List;
  ***************************************************************/
 public class Customer {
 
-    private final long id = 0;
+    private final long id;
+    private final String name = "Customer";
     private final List<String> myStuff = new ArrayList<>();
     
     /***************************************************************
      * 
      ***************************************************************/
-    public Customer() {
+    public Customer(long id) {
+        this.id = id;
     }
 
     /***************************************************************
@@ -37,5 +39,12 @@ public class Customer {
      ***************************************************************/
     public long getId() {
         return id;
+    }
+
+    /***************************************************************
+     * @return
+     ***************************************************************/
+    public String getName() {
+        return this.name;
     }
 }
