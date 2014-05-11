@@ -14,9 +14,9 @@ greetingApp.config(['$routeProvider',
         templateUrl: 'partials/greeting.html',
         controller: 'GreetingCtrl'
       }).
-      when('/controller1', {
-          templateUrl: 'partials/controller1.html',
-          controller: 'Controller1Ctrl'
+      when('/workItemController', {
+          templateUrl: 'partials/workItem.html',
+          controller: 'workItemCtrl'
         }).
         when('/controller2', {
             templateUrl: 'partials/controller2.html',

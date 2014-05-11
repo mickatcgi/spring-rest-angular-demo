@@ -14,11 +14,11 @@ greetingControllers.controller('GreetingCtrl', [
 					});
 		} ]);
 
-greetingControllers.controller('Controller1Ctrl', [
+greetingControllers.controller('workItemCtrl', [
 		'$scope',
 		'$http',
 		function($scope, $http) {
-			$http.get('http://localhost:8080/controller1.json').success(
+			$http.get('http://localhost:8080/workItem.json').success(
 					function(data) {
 						$scope.workItem = data;
 					});

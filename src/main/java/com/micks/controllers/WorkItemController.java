@@ -16,14 +16,14 @@ import com.micks.model.WorkItem;
  *
  ***************************************************************/
 @Controller
-public class Controller1 {
+public class WorkItemController {
 
     private final AtomicLong counter = new AtomicLong();
 
     /***************************************************************
      * 
      ***************************************************************/
-    @RequestMapping("/controller1")
+    @RequestMapping("/workItem")
     public @ResponseBody WorkItem getStuff() {
         WorkItem w = new WorkItem(counter.incrementAndGet());
         return w;

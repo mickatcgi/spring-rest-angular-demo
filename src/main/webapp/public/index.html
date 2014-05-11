@@ -22,14 +22,14 @@
     <body>
     
 	    <h1>Mick's demo Springboot REST app with AngularJs</h1>
-	    <ul>
-	      <li>Springboot Jar Build date: <span class="props">${build.date}</span></li>
-          <li>Springboot version: <span class="props">${spring-boot.version}</span></li>
-          <li>Spring version: <span class="props">${spring.version}</span></li>
-	      <li>Angularjs version: <span class="props">${angularjs.version}</span></li>
-          <li>JQuery version: <span class="props">${jquery.version}</span></li>
-          <li>Java version: <span class="props">${java.version}</span></li>
-	    </ul>
+	    <table border="1">
+	    <tr><td>Springboot Jar Build date:</td><td><span class="props">${build.date}</span></td></tr>
+        <tr><td>Springboot version:</td><td><span class="props">${spring-boot.version}</span></td></tr>
+        <tr><td>Spring version:</td><td><span class="props">${spring.version}</span></td></tr>
+	    <tr><td>Angularjs version:</td><td><span class="props">${angularjs.version}</span></td></tr>
+        <tr><td>JQuery version:</td><td><span class="props">${jquery.version}</span></td></tr>
+        <tr><td>Java version:</td><td><span class="props">${java.version}</span></td></tr>
+	    </table>
 	
         <div>  
             <h2>Click the following links to invoke Angular controllers and the 
@@ -37,7 +37,7 @@
             <ul>         
             <li><a href="#home">Home</a></li>
             <li><a href="#greeting">Greeting</a></li>
-            <li><a href="#controller1">Controller1</a></li>             
+            <li><a href="#workItemController">WorkItem Controller</a></li>             
             <li><a href="#controller2">Controller2</a></li>              
             </ul>             
         </div>
