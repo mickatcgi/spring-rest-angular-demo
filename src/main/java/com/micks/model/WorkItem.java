@@ -13,6 +13,7 @@ import java.util.List;
 public class WorkItem {
 
     private final long id;
+    private final String name = "WorkItem";
     private final List<String> myStuff = new ArrayList<>();
     
     /***************************************************************
@@ -38,5 +39,9 @@ public class WorkItem {
      ***************************************************************/
     public long getId() {
         return id;
+    }
+    
+    public String getName() {
+        return this.name;
     }
 }
