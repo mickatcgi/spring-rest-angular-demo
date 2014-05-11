@@ -1,4 +1,4 @@
-package com.micks.ang;
+package com.micks.controllers;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.SpringApplication;

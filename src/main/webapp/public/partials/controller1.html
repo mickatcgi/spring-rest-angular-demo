@@ -1,7 +1,9 @@
 <div>
-    <hr/>
-    <h2>Controller1</h2>
-    <p>The ID is {{controller1Data.id}}</p>
-    <p>The content is {{controller1Data.content}}</p>
-    <hr/>
+	<hr />
+	<h2>Controller1</h2>
+	<p>The ID is {{workItem.id}}</p>
+	<div ng-repeat="stuff in workItem.myStuff">
+	    Hello {{stuff}}!
+	</div>
+	<hr />
 </div>

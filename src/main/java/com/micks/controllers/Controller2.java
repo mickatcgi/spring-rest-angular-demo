@@ -1,4 +1,7 @@
-package com.micks.ang;
+/**
+ * 
+ */
+package com.micks.controllers;
 
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
@@ -8,25 +11,32 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-@Controller
-public class GreetingController {
+import com.micks.model.Greeting;
 
-    private static final String template = "Hello, %s! Today is %s";
+/***************************************************************
+ * @author mick
+ *
+ ***************************************************************/
+@Controller
+public class Controller2 {
+
     private final AtomicLong counter = new AtomicLong();
 
     /***************************************************************
-     * @param name
-     * @return
+     * 
      ***************************************************************/
-    @RequestMapping("/greeting")
-    public @ResponseBody Greeting greeting(
-        @RequestParam(value = "name", required = false, defaultValue = "Billybob") String name) {
+    @RequestMapping("/controller2")
+    public @ResponseBody Greeting getStuff(
+        @RequestParam(value = "name", 
+        required = false, 
+        defaultValue = "Doofenschmirtz") String name) {
 
         Date today = new Date();
         Greeting g = new Greeting(
             counter.incrementAndGet(),
-            String.format(template, name, today));
+            String.format("Controller2: %s on %s", name, today));
 
         return g;
     }
+
 }

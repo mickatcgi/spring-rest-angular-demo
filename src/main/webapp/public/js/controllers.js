@@ -20,7 +20,7 @@ greetingControllers.controller('Controller1Ctrl', [
 		function($scope, $http) {
 			$http.get('http://localhost:8080/controller1.json').success(
 					function(data) {
-						$scope.controller1Data = data;
+						$scope.workItem = data;
 					});
 		} ]);
 

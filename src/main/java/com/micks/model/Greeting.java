@@ -1,4 +1,4 @@
-package com.micks.ang;
+package com.micks.model;
 
 public class Greeting {
 
