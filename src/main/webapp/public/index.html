@@ -8,6 +8,10 @@
     <link rel="stylesheet" type="text/css" href="/resources/css/stylesheet.css" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
+    <!-- Instead of taking the normal route and including javascript directly
+         from the vendor websites or downloading it as .js files I used the 
+         jar files conveniently packaged here: http://www.webjars.org/.
+         These jars are included in the pom.xml file and are pulled in at build time -->
     <script type="text/javascript" src="/webjars/jquery/${jquery.version}/jquery.min.js"></script>
     <script type="text/javascript" src="/webjars/angular-file-upload/${angular-file-upload.version}/angular-file-upload-html5-shim.min.js"></script>
     <script type="text/javascript" src="/webjars/angularjs/${angularjs.version}/angular.min.js"></script>
