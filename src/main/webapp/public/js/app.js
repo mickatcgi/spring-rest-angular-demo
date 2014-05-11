@@ -1,13 +1,13 @@
 'use strict';
 
-/* App Module */
+/* App Module  - configure links to views and links to controllers*/
 
-var greetingApp = angular.module('greetingApp', [
+var trade360app = angular.module('trade360app', [
   'ngRoute',
-  'greetingControllers'
+  'trade360Controllers'
 ]);
 
-greetingApp.config(['$routeProvider',
+trade360app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/instrumentController', {	/* matches href name in index.html */

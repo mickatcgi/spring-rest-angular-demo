@@ -1,10 +1,10 @@
 'use strict';
 
-/* Controllers */
+/* Controllers - configure interaction with back-end */
 
-var greetingControllers = angular.module('greetingControllers', []);
+var trade360Controllers = angular.module('trade360Controllers', []);
 
-greetingControllers.controller('instrumentCtrl', [
+trade360Controllers.controller('instrumentCtrl', [
 		'$scope',
 		'$http',
 		function($scope, $http) {
@@ -14,7 +14,7 @@ greetingControllers.controller('instrumentCtrl', [
 					});
 		} ]);
 
-greetingControllers.controller('workItemCtrl', [
+trade360Controllers.controller('workItemCtrl', [
 		'$scope',
 		'$http',
 		function($scope, $http) {
@@ -24,7 +24,7 @@ greetingControllers.controller('workItemCtrl', [
 					});
 		} ]);
 
-greetingControllers.controller('customerCtrl', [
+trade360Controllers.controller('customerCtrl', [
 		'$scope',
 		'$http',
 		function($scope, $http) {
