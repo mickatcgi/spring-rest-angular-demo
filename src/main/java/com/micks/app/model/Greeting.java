@@ -1,4 +1,4 @@
-package com.micks.model;
+package com.micks.app.model;
 
 public class Greeting {
 

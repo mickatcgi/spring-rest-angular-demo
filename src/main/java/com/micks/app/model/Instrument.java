@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.micks.model;
+package com.micks.app.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,20 +10,16 @@ import java.util.List;
  * @author mick
  *
  ***************************************************************/
-/***************************************************************
- * @author mick
- *
- ***************************************************************/
-public class WorkItem {
+public class Instrument {
 
     private final long id;
-    private final String name = "WorkItem";
+    private final String name = "Instrument";
     private final List<String> myStuff = new ArrayList<>();
     
     /***************************************************************
      * 
      ***************************************************************/
-    public WorkItem(long id) {
+    public Instrument(long id) {
         this.id = id;
     }
 
@@ -32,7 +28,7 @@ public class WorkItem {
      ***************************************************************/
     public List<String> getMyStuff() {
         for(int x = 0; x < 5; x++) {
-            String s = String.format("Workitem list stuff #%s", x);
+            String s = String.format("Instrument list stuff #%s", x);
             myStuff.add(s);
         }
         return this.myStuff;
@@ -44,7 +40,7 @@ public class WorkItem {
     public long getId() {
         return id;
     }
-    
+
     /***************************************************************
      * @return
      ***************************************************************/

@@ -1,4 +1,4 @@
-package com.micks.controllers;
+package com.micks.app.config;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.SpringApplication;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @author mick
  *
  ***************************************************************/
-@ComponentScan
+@ComponentScan(basePackages = "com.micks.app")
 @EnableAutoConfiguration
 public class Application {
 

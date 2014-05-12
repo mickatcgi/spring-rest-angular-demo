@@ -1,7 +1,4 @@
-/**
- * 
- */
-package com.micks.controllers;
+package com.micks.app.controllers;
 
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -9,24 +6,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.micks.model.Customer;
+import com.micks.app.model.Instrument;
+import com.micks.app.model.WorkItem;
 
-/***************************************************************
- * @author mick
- *
- ***************************************************************/
 @Controller
-public class CustomerController {
+public class InstrumentController {
 
     private final AtomicLong counter = new AtomicLong();
 
     /***************************************************************
      * 
      ***************************************************************/
-    @RequestMapping("/customer")
-    public @ResponseBody Customer getStuff() {
-
-        Customer c = new Customer(counter.incrementAndGet());
-        return c;
+    @RequestMapping("/instrument")
+    public @ResponseBody Instrument getStuff() {
+        Instrument i = new Instrument(counter.incrementAndGet());
+        return i;
     }
+
 }
