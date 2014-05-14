@@ -47,4 +47,14 @@ public class Customer {
     public String getName() {
         return this.name;
     }
+
+    /***************************************************************
+       (non-Javadoc)
+     * @see java.lang.Object#toString()
+     ***************************************************************/
+    @Override
+    public String toString() {
+        return String.format("Customer [id=%s, name=%s, myStuff=%s]", id, name,
+            myStuff);
+    }
 }
