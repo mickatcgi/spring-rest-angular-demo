@@ -32,7 +32,7 @@ public class CustomerController {
 
         Customer c = new Customer(counter.incrementAndGet());
         
-        this.log.info("MICK - Customer = %s" + c.toString());
+        this.log.info("MICK - Customer = " + c.toString());
         
         return c;
     }

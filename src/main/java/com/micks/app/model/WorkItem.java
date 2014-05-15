@@ -51,4 +51,14 @@ public class WorkItem {
     public String getName() {
         return this.name;
     }
+
+    /***************************************************************
+       (non-Javadoc)
+     * @see java.lang.Object#toString()
+     ***************************************************************/
+    @Override
+    public String toString() {
+        return "WorkItem [id=" + id + ", name=" + name + ", myStuff=" + myStuff
+            + "]";
+    }
 }

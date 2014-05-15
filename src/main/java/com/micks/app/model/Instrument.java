@@ -47,4 +47,14 @@ public class Instrument {
     public String getName() {
         return this.name;
     }
+
+    /***************************************************************
+       (non-Javadoc)
+     * @see java.lang.Object#toString()
+     ***************************************************************/
+    @Override
+    public String toString() {
+        return "Instrument [id=" + id + ", name=" + name + ", myStuff="
+            + myStuff + "]";
+    }
 }
