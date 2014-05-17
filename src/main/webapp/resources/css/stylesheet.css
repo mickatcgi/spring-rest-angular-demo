@@ -1,3 +1,10 @@
+
+/* Angular-ui bootstrap requirements */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+
+/* Mick's styles */
+
 .props {
 	color: green;
 	font-weight: bold;
