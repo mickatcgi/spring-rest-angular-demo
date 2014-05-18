@@ -32,45 +32,4 @@ trade360Controllers.controller('customerCtrl', [ '$scope', '$http',
 			});
 		} ]);
 
-/*******************************************************************************
- * Button Controller
- ******************************************************************************/
 
-angular.module('myModule', [ 'ui.bootstrap' ]);
-
-var ButtonsCtrl = function($scope) {
-
-	$scope.singleModel = 1;
-
-	$scope.radioModel = 'Middle';
-
-	$scope.checkModel = {
-		left : false,
-		middle : true,
-		right : false
-	};
-};
-
-/*******************************************************************************
- * Alert Controller
- ******************************************************************************/
-function AlertDemoCtrl($scope) {
-	$scope.alerts = [ {
-		type : 'danger',
-		msg : 'Alert Danger'
-	}, {
-		type : 'success',
-		msg : 'Alert Success'
-	} ];
-
-	$scope.addAlert = function() {
-		$scope.alerts.push({
-			msg : 'Another alert!'
-		});
-	};
-
-	$scope.closeAlert = function(index) {
-		$scope.alerts.splice(index, 1);
-	};
-
-}

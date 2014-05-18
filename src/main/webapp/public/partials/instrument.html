@@ -1,28 +1,9 @@
 <div class="partial-bg">
 	<hr />
+	   <input type="text" ng-model="newInstrument"> {{newInstr}}
+	<hr />
 	<h2>Instrument Controller</h2>
 	<p>I am an {{instrument.name}}. My ID is {{instrument.id}}</p>
 	<div ng-repeat="stuff in instrument.myStuff">Hello {{stuff}}!</div>
-
-	<h3>About to show angular-ui widgets</h3>
-	<div ng-controller="ButtonsCtrl">
-		<h4>Single toggle</h4>
-		<pre>{{singleModel}}</pre>
-		<button type="button" class="btn btn-primary" ng-model="singleModel"
-			btn-checkbox btn-checkbox-true="1" btn-checkbox-false="0">
-			Single Toggle</button>
-	</div>
-
-    <h3>About to show an alert widgets</h3>
-	<div ng-controller="AlertDemoCtrl">
-		<alert ng-repeat="alert in alerts" type="{{alert.type}}"
-			close="closeAlert($index)">{{alert.msg}}<br/></alert>
-		<button class='btn btn-default' ng-click="addAlert()">
-		  Add Alert
-		</button>
-	</div>
-
-
-
 	<hr />
 </div>
