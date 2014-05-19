@@ -12,11 +12,13 @@ var wi_url = base_url + "workItem.json";
 var cust_url = base_url + "customer.json";
 
 trade360Controllers.controller('instrumentCtrl', [ '$scope', '$http',
-		function($scope, $http) {
+		
+        function($scope, $http) {
 			$http.get(instr_url).success(function(data) {
 				$scope.instrument = data;
 			});
-		} ]);
+		}
+]);
 
 trade360Controllers.controller('workItemCtrl', [ '$scope', '$http',
 		function($scope, $http) {
