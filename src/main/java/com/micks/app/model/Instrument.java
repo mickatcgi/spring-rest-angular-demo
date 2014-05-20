@@ -15,7 +15,7 @@ public class Instrument {
     private final long id;
     private final String name = "Instrument";
     private final List<String> myStuff = new ArrayList<>();
-    
+
     /***************************************************************
      * 
      ***************************************************************/
@@ -27,10 +27,12 @@ public class Instrument {
      * @return
      ***************************************************************/
     public List<String> getMyStuff() {
-        for(int x = 0; x < 5; x++) {
-            String s = String.format("Instrument list stuff #%s", x);
-            myStuff.add(s);
-        }
+        myStuff.add("Cheese instrument 1111");
+        myStuff.add("Bacon instrument 3333");
+        myStuff.add("Guitar instrument 9999");
+        myStuff.add("Piano instrument 4444");
+        myStuff.add("Drums instrument 6666");
+
         return this.myStuff;
     }
 
@@ -49,7 +51,8 @@ public class Instrument {
     }
 
     /***************************************************************
-       (non-Javadoc)
+     * (non-Javadoc)
+     * 
      * @see java.lang.Object#toString()
      ***************************************************************/
     @Override

@@ -1,13 +1,7 @@
 <div class="partial-bg">
 	<hr />
     <h2>Instrument Controller</h2>
-	<div id="myList" 
-	   ng-init="customers=[
-	       {name:'Billy Bob', city:'Phoenix'}, 
-	       {name:'Jim Bob', city:'Preston'}, 
-	       {name:'Bobby Sue', city:'Manchester'}, 
-	       {name:'Zubediah Bilbo', city:'London'}
-	   ]">
+	<div id="myList">
 		
 		Enter New Name:&nbsp;<input type="text" ng-model="name">
 		{{name}}
@@ -18,7 +12,10 @@
 		</ul>
 	</div>
 	<hr />
-	<p>I am an {{instrument.name}}. My ID is {{instrument.id}}</p>
-	<div ng-repeat="stuff in instrument.myStuff">Hello {{stuff}}!</div>
+
+    Enter Instrument to filter on:&nbsp;<input type="text" ng-model="instrNum">
+    {{instrNum}}	
+    <p>I am an {{instrument.name}}. My ID is {{instrument.id}}</p>
+	<div ng-repeat="stuff in instrument.myStuff | filter:instrNum">Hello {{stuff}}!</div>
 	<hr />
 </div>

@@ -17,7 +17,14 @@ trade360Controllers.controller('instrumentCtrl', [ '$scope', '$http',
 			$http.get(instr_url).success(function(data) {
 				$scope.instrument = data;
 			});
-		}
+
+			$scope.customers=[
+        	       	       {name:'Billy Bob', city:'Phoenix'}, 
+        	    	       {name:'Jim Bob', city:'Preston'}, 
+        	    	       {name:'Bobby Sue', city:'Manchester'}, 
+        	    	       {name:'Zubediah Bilbo', city:'London'}
+        	    	   ];
+        }
 ]);
 
 trade360Controllers.controller('workItemCtrl', [ '$scope', '$http',
