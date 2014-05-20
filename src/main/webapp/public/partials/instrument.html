@@ -1,9 +1,23 @@
 <div class="partial-bg">
 	<hr />
-	   Enter New Instrument #:&nbsp;
-	   <input type="text" ng-model="newInstr"> {{newInstr}}
+    <h2>Instrument Controller</h2>
+	<div id="myList" 
+	   ng-init="customers=[
+	       {name:'Billy Bob', city:'Phoenix'}, 
+	       {name:'Jim Bob', city:'Preston'}, 
+	       {name:'Bobby Sue', city:'Manchester'}, 
+	       {name:'Zubediah Bilbo', city:'London'}
+	   ]">
+		
+		Enter New Name:&nbsp;<input type="text" ng-model="name">
+		{{name}}
+		<ul>
+		  <li ng-repeat="cust in customers | orderBy:'city' | filter:name">
+		  {{cust.name | uppercase}} - {{cust.city | lowercase}}
+		  </li>
+		</ul>
+	</div>
 	<hr />
-	<h2>Instrument Controller</h2>
 	<p>I am an {{instrument.name}}. My ID is {{instrument.id}}</p>
 	<div ng-repeat="stuff in instrument.myStuff">Hello {{stuff}}!</div>
 	<hr />
