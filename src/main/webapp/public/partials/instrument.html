@@ -1,27 +1,6 @@
 <div class="partial-bg">
 	<hr />
     <h2>Instrument Controller</h2>
-	<div id="myList">
-		
-		Enter New Customer Name:&nbsp;<input type="text" ng-model="newCustomer.name">{{newCustomer.name}}
-        <br/>
-        Enter New Customer City:&nbsp;<input type="text" ng-model="newCustomer.city">{{newCustomer.city}}
-		<br/>
-		<br/>
-		<button ng-click="addCustomer()">Add Customer</button>
-		<br/>
-        Search by Name:&nbsp;<input type="text" ng-model="filter.name">{{filter.name}}
-		<ul>
-		  <li ng-repeat="cust in customers | orderBy:'name' | filter:filter.name">
-		  {{cust.name | uppercase}} - {{cust.city | lowercase}}
-		  </li>
-		</ul>
-	</div>
-	<hr />
-
-    Enter Instrument to filter on:&nbsp;<input type="text" ng-model="instrNum">
-    {{instrNum}}	
-    <p>I am an {{instrument.name}}. My ID is {{instrument.id}}</p>
-	<div ng-repeat="stuff in instrument.myStuff | filter:instrNum">Hello {{stuff}}!</div>
-	<hr />
+    <p>I am a {{instrument.name}}. My ID is {{instrument.id}}</p>
+    <div ng-repeat="stuff in instrument.myStuff">Hello {{stuff}}!</div>
 </div>

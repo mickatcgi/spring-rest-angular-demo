@@ -5,4 +5,29 @@
 	<div ng-repeat="stuff in customer.myStuff">Hello {{stuff}}!</div>
 
 	<hr />
+
+    <div id="myList">
+        
+        Enter New Customer Name:&nbsp;<input type="text" ng-model="newCustomer.name">{{newCustomer.name}}
+        <br/>
+        Enter New Customer City:&nbsp;<input type="text" ng-model="newCustomer.city">{{newCustomer.city}}
+        <br/>
+        <br/>
+        <button ng-click="addCustomer()">Add Customer</button>
+        <br/>
+        Search by Name:&nbsp;<input type="text" ng-model="filter.name">{{filter.name}}
+        <ul>
+          <li ng-repeat="cust in customers | orderBy:'name' | filter:filter.name">
+          {{cust.name | uppercase}} - {{cust.city | lowercase}}
+          </li>
+        </ul>
+    </div>
+    <hr />
+
+    Enter Customer to filter on:&nbsp;<input type="text" ng-model="custNum">
+    {{custNum}}    
+    <p>I am an {{customer.name}}. My ID is {{customer.id}}</p>
+    <div ng-repeat="stuff in customer.myStuff | filter:custNum">Hello {{stuff}}!</div>
+    <hr />
+
 </div>

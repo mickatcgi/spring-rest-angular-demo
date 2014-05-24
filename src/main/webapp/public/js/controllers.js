@@ -11,27 +11,43 @@ var instr_url = base_url + "instrument.json";
 var wi_url = base_url + "workItem.json";
 var cust_url = base_url + "customer.json";
 
+/****************************************************************************/
+
 trade360Controllers.controller('instrumentCtrl', [ '$scope', '$http',
-		
-        function($scope, $http) {
+		function($scope, $http) {
 			$http.get(instr_url).success(function(data) {
 				$scope.instrument = data;
 			});
+		} ]);
 
-			$scope.customers=[
-        	   {name:'Billy Bob', city:'Phoenix'}, 
-        	   {name:'Jim Bob', city:'Preston'}, 
-        	   {name:'Bobby Sue', city:'Manchester'}, 
-        	   {name:'Zubediah Bilbo', city:'London'}
-        	];
-        
-			$scope.addCustomer = function() {
-			    $scope.customers.push({
-			    	name:$scope.newCustomer.name, 
-			    	city:$scope.newCustomer.city});
-			}
-		}
-]);
+/****************************************************************************/
+
+trade360Controllers.controller(
+		'customerCtrl', 
+		[ '$scope', '$http', 'CustomerFactory',
+		
+	        function($scope, $http, CustomerFactory) {
+				$http.get(instr_url).success(function(data) {
+					$scope.instrument = data;
+				});
+	
+				$scope.customers = CustomerFactory.getCustomers();
+	        
+				$scope.addCustomer = function() {
+				    $scope.customers.push({
+				    	name:$scope.newCustomer.name, 
+				    	city:$scope.newCustomer.city});
+				}
+			
+				$http.get(instr_url).success(function(data) {
+					$scope.dbCustomer = data;
+				});
+
+		    }
+		]
+);
+
+/****************************************************************************/
 
 trade360Controllers.controller('workItemCtrl', [ '$scope', '$http',
 		function($scope, $http) {
@@ -40,11 +56,38 @@ trade360Controllers.controller('workItemCtrl', [ '$scope', '$http',
 			});
 		} ]);
 
-trade360Controllers.controller('customerCtrl', [ '$scope', '$http',
-		function($scope, $http) {
-			$http.get(cust_url).success(function(data) {
-				$scope.customer = data;
-			});
-		} ]);
+/****************************************************************************/
 
+trade360Controllers.factory('CustomerFactory', function() {
+	
+	var factory = {};
+	var customers = [
+	          	   {name:'Billy Bob', city:'Phoenix'}, 
+	        	   {name:'Jim Bob', city:'Preston'}, 
+	        	   {name:'Bobby Sue', city:'Manchester'}, 
+	        	   {name:'Zubediah Bilbo', city:'London'}
+	        	];
+	
+	factory.getCustomers = function() {
+		return customers;
+	};
+	
+	return factory;
+});
+
+/****************************************************************************/
+
+trade360Controllers.service('InstrumentService', function() {
+	
+	var instruments = [
+	          	   {name:'Guitar', description:'Lots of strings'}, 
+	        	   {name:'Flute', description: 'Hollow log'}, 
+	        	   {name:'Drums', description:'Really noisy'}, 
+	        	   {name:'Piano', description:'Lots of keys'}
+	        	];
+	
+	this.getInstruments = function() {
+		return instruments;
+	};
+});
 
