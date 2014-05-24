@@ -19,12 +19,18 @@ trade360Controllers.controller('instrumentCtrl', [ '$scope', '$http',
 			});
 
 			$scope.customers=[
-        	       	       {name:'Billy Bob', city:'Phoenix'}, 
-        	    	       {name:'Jim Bob', city:'Preston'}, 
-        	    	       {name:'Bobby Sue', city:'Manchester'}, 
-        	    	       {name:'Zubediah Bilbo', city:'London'}
-        	    	   ];
-        }
+        	   {name:'Billy Bob', city:'Phoenix'}, 
+        	   {name:'Jim Bob', city:'Preston'}, 
+        	   {name:'Bobby Sue', city:'Manchester'}, 
+        	   {name:'Zubediah Bilbo', city:'London'}
+        	];
+        
+			$scope.addCustomer = function() {
+			    $scope.customers.push({
+			    	name:$scope.newCustomer.name, 
+			    	city:$scope.newCustomer.city});
+			}
+		}
 ]);
 
 trade360Controllers.controller('workItemCtrl', [ '$scope', '$http',
