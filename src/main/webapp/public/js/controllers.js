@@ -35,17 +35,21 @@ trade360Controllers.controller(
 		
 	        function($scope, $http, CustomerFactory, RestCustomerFactory) {
 			
+			    /* Gets customers from factory with local data */
 				$scope.customers = CustomerFactory.getCustomers();
 	        
+				/* Add a customer locally to the local customer list */
 				$scope.addCustomer = function() {
 				    $scope.customers.push({
 				    	name:$scope.newCustomer.name, 
 				    	city:$scope.newCustomer.city});
 				}
 			
+				/* Gets customers from factory with remote REST call */
     			RestCustomerFactory.getCustomers(function(data) {
     				$scope.dbCustomer = data;
-				    console.log('MICK - RestCustomerFactory async returned value =' + data);
+				    console.log('MICK - RestCustomerFactory async returned value =' 
+				        + JSON.stringify(data));
     			});
 
 		    }
