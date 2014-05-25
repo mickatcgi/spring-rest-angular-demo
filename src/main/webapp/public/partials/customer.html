@@ -24,10 +24,8 @@
     </div>
     <hr />
 
-    Enter Customer to filter on:&nbsp;<input type="text" ng-model="custNum">
-    {{custNum}}    
-    <p>I am an {{customer.name}}. My ID is {{customer.id}}</p>
-    <div ng-repeat="stuff in customer.myStuff | filter:custNum">Hello {{stuff}}!</div>
+    <p>I am an {{dbCustomer.name}}. My ID is {{dbCustomer.id}}</p>
+    <div ng-repeat="stuff in dbCustomer.myStuff">Hello {{stuff}}!</div>
     <hr />
 
 </div>

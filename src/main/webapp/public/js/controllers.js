@@ -13,12 +13,18 @@ var cust_url = base_url + "customer.json";
 
 /****************************************************************************/
 
-trade360Controllers.controller('instrumentCtrl', [ '$scope', '$http',
-		function($scope, $http) {
+trade360Controllers.controller(
+		'instrumentCtrl', 
+		[ '$scope', '$http', 'InstrumentService',
+		function($scope, $http, InstrumentService) {
 			$http.get(instr_url).success(function(data) {
 				$scope.instrument = data;
 			});
-		} ]);
+		
+			$scope.musicalInstruments = InstrumentService.getInstruments();
+		
+		} ]
+);
 
 /****************************************************************************/
 
@@ -39,7 +45,7 @@ trade360Controllers.controller(
 				    	city:$scope.newCustomer.city});
 				}
 			
-				$http.get(instr_url).success(function(data) {
+				$http.get(cust_url).success(function(data) {
 					$scope.dbCustomer = data;
 				});
 
