@@ -33,11 +33,10 @@ trade360Controllers.controller(
 trade360Controllers.controller(
 		'customerCtrl', 
 		[ '$scope', '$http', 'CustomerFactory', 'RestCustomerFactory',
-		  'RestCustomerAddressFactory', 'Api',
+		  'RestCustomerAddressFactory',
 		
 	        function($scope, $http, CustomerFactory, 
-	        		RestCustomerFactory, RestCustomerAddressFactory,
-	        		Api) {
+	        		RestCustomerFactory, RestCustomerAddressFactory) {
 			
 			    /* Gets customers from factory with local data */
 				$scope.customers = CustomerFactory.getCustomers();
@@ -63,12 +62,6 @@ trade360Controllers.controller(
 				        + JSON.stringify(data));
     			});
     			
-    			$scope.resCustomer = Api.resCustomer.get();
-    			$scope.resCustomerAddress = Api.resCustomerAddress.query();
-    			
-    			console.log('MICK - resCustomer = ' + JSON.stringify($scope.resCustomer));
-    			console.log('MICK - resCustomerAddress = ' + JSON.stringify($scope.resCustomerAddress));
-
 		    }
 		]
 );
@@ -132,16 +125,6 @@ trade360Controllers.factory(
 			}
 		]
 );
-
-trade360Controllers.factory(
-		'Api', 
-		['$resource',
-          function($resource) {
-			return {
-                resCustomer: $resource(cust_url),
-                resCustomerAddress:  $resource(cust_addr_url),
-            };
-}]);
 
 /****************************************************************************/
 

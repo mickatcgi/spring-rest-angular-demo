@@ -21,7 +21,13 @@
     <hr />
 
     <p>I am a {{dbCustomer.name}}. My ID is {{dbCustomer.id}}</p>
-    <p>Address: {{dbCustomerAddress.addrLine1}}</p>
+    <p style="color:blue;">
+        Address: {{dbCustomerAddress.addrLine1}},&nbsp;
+        {{dbCustomerAddress.addrLine2}},&nbsp;
+        {{dbCustomerAddress.city}},&nbsp;
+        {{dbCustomerAddress.state}},&nbsp;
+        {{dbCustomerAddress.zip}}
+    </p>
     <div ng-repeat="stuff in dbCustomer.myStuff">Hello {{stuff}}!</div>
     <hr />
 
