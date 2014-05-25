@@ -14,7 +14,7 @@ public class Customer {
 
     private final long id;
     private final String name = "Customer";
-    private final List<String> myStuff = new ArrayList<>();
+    private List<String> myStuff = new ArrayList<>();
     
     /***************************************************************
      * 
@@ -55,6 +55,6 @@ public class Customer {
     @Override
     public String toString() {
         return String.format("Customer [id=%s, name=%s, myStuff=%s]", id, name,
-            myStuff);
+            myStuff.toString());
     }
 }

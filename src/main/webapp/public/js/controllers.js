@@ -16,6 +16,7 @@ var cust_url = base_url + "customer.json";
 trade360Controllers.controller(
 		'instrumentCtrl', 
 		[ '$scope', '$http', 'InstrumentService',
+		  
 		function($scope, $http, InstrumentService) {
 			$http.get(instr_url).success(function(data) {
 				$scope.instrument = data;
@@ -30,13 +31,10 @@ trade360Controllers.controller(
 
 trade360Controllers.controller(
 		'customerCtrl', 
-		[ '$scope', '$http', 'CustomerFactory',
+		[ '$scope', '$http', 'CustomerFactory', 'RestCustomerFactory',
 		
-	        function($scope, $http, CustomerFactory) {
-				$http.get(instr_url).success(function(data) {
-					$scope.instrument = data;
-				});
-	
+	        function($scope, $http, CustomerFactory, RestCustomerFactory) {
+			
 				$scope.customers = CustomerFactory.getCustomers();
 	        
 				$scope.addCustomer = function() {
@@ -45,9 +43,10 @@ trade360Controllers.controller(
 				    	city:$scope.newCustomer.city});
 				}
 			
-				$http.get(cust_url).success(function(data) {
-					$scope.dbCustomer = data;
-				});
+    			RestCustomerFactory.getCustomers(function(data) {
+    				$scope.dbCustomer = data;
+				    console.log('MICK - RestCustomerFactory async returned value =' + data);
+    			});
 
 		    }
 		]
@@ -80,6 +79,23 @@ trade360Controllers.factory('CustomerFactory', function() {
 	
 	return factory;
 });
+
+/****************************************************************************/
+
+trade360Controllers.factory(
+		'RestCustomerFactory', 
+		['$http',
+		 
+			 function($http) {
+				 return {
+					getCustomers: function(callback) {
+					    $http.get(cust_url).success(callback);
+					}
+				}
+			}
+		]
+);
+
 
 /****************************************************************************/
 
