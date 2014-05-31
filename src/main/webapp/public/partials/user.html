@@ -1,0 +1,16 @@
+<div class="partial-bg">
+	<hr />
+	<h2>User Controller</h2>
+    <p>Single user lookup found user id = {{user.id}}, name = {{user.name}}
+    <br/>
+    
+    <ul>
+        <li ng-repeat="u in users">User Id: {{u.id}} - {{u.name}}</li>
+    </ul>
+
+    <br/>
+    <button ng-click="updateUser()">Update User</button>
+
+    <hr />
+
+</div>

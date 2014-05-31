@@ -3,7 +3,7 @@
 /* App Module - configure links to views and links to controllers */
 
 var trade360app = angular.module('trade360app', [ 'ngRoute',
-		'trade360Controllers' ]);
+		'trade360Controllers', 'trade360Services' ]);
 
 trade360app.config([ '$routeProvider',
 
@@ -21,6 +21,9 @@ function($routeProvider) {
 	}).when('/customerController', {
 		templateUrl : 'partials/customer.html',
 		controller : 'customerCtrl'
+	}).when('/userController', {
+		templateUrl : 'partials/user.html',
+		controller : 'userCtrl'
 	}).otherwise({
 		/*
 		 * Any href/link that doesn't match the above list, e.g. /bogus will end

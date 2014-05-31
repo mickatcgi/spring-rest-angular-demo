@@ -1,0 +1,39 @@
+== Info: Adding handle: conn: 0x1389cc0
+== Info: Adding handle: send: 0
+== Info: Adding handle: recv: 0
+== Info: Curl_addHandleToPipeline: length: 1
+== Info: - Conn 0 (0x1389cc0) send_pipe: 1, recv_pipe: 0
+== Info: About to connect() to mint1-laptop port 8090 (#0)
+== Info:   Trying 192.168.1.189...
+== Info: Connected to mint1-laptop (192.168.1.189) port 8090 (#0)
+=> Send header, 161 bytes (0xa1)
+0000: 50 55 54 20 2f 75 73 65 72 73 2f 33 2f 75 70 64 PUT /users/3/upd
+0010: 61 74 65 20 48 54 54 50 2f 31 2e 31 0d 0a 55 73 ate HTTP/1.1..Us
+0020: 65 72 2d 41 67 65 6e 74 3a 20 63 75 72 6c 2f 37 er-Agent: curl/7
+0030: 2e 33 32 2e 30 0d 0a 48 6f 73 74 3a 20 6d 69 6e .32.0..Host: min
+0040: 74 31 2d 6c 61 70 74 6f 70 3a 38 30 39 30 0d 0a t1-laptop:8090..
+0050: 41 63 63 65 70 74 3a 20 2a 2f 2a 0d 0a 43 6f 6e Accept: */*..Con
+0060: 74 65 6e 74 2d 54 79 70 65 3a 20 61 70 70 6c 69 tent-Type: appli
+0070: 63 61 74 69 6f 6e 2f 6a 73 6f 6e 3b 63 68 61 72 cation/json;char
+0080: 73 65 74 3d 75 74 66 2d 38 0d 0a 43 6f 6e 74 65 set=utf-8..Conte
+0090: 6e 74 2d 4c 65 6e 67 74 68 3a 20 33 34 0d 0a 0d nt-Length: 34...
+00a0: 0a                                              .
+=> Send data, 34 bytes (0x22)
+0000: 7b 20 22 69 64 22 3a 20 31 30 2c 20 22 6e 61 6d { "id": 10, "nam
+0010: 65 22 3a 20 22 74 65 72 72 79 20 62 75 6c 65 22 e": "terry bule"
+0020: 20 7d                                            }
+== Info: upload completely sent off: 34 out of 34 bytes
+<= Recv header, 26 bytes (0x1a)
+0000: 48 54 54 50 2f 31 2e 31 20 34 30 30 20 42 61 64 HTTP/1.1 400 Bad
+0010: 20 52 65 71 75 65 73 74 0d 0a                    Request..
+<= Recv header, 19 bytes (0x13)
+0000: 43 6f 6e 74 65 6e 74 2d 4c 65 6e 67 74 68 3a 20 Content-Length: 
+0010: 30 0d 0a                                        0..
+== Info: Server Jetty(8.1.14.v20131031) is not blacklisted
+<= Recv header, 33 bytes (0x21)
+0000: 53 65 72 76 65 72 3a 20 4a 65 74 74 79 28 38 2e Server: Jetty(8.
+0010: 31 2e 31 34 2e 76 32 30 31 33 31 30 33 31 29 0d 1.14.v20131031).
+0020: 0a                                              .
+<= Recv header, 2 bytes (0x2)
+0000: 0d 0a                                           ..
+== Info: Connection #0 to host mint1-laptop left intact
