@@ -9,15 +9,26 @@ package com.micks.app.model;
  ***************************************************************/
 public class User {
 
-    private final long id;
+    private long id;
     private String name;
 
+    /***************************************************************
+     * 
+     ***************************************************************/
+    public User() {
+        this(0, null);
+    }
+    
     /***************************************************************
      * 
      ***************************************************************/
     public User(long id, String name) {
         this.id = id;
         this.name = name;
+    }
+    
+    public void setId(long id) {
+        this.id = id;
     }
 
     public long getId() {
