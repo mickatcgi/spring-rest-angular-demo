@@ -10,21 +10,23 @@ package com.micks.app.model;
 public class User {
 
     private long id;
-    private String name;
+    private String firstName;
+    private String lastName;
 
     /***************************************************************
      * 
      ***************************************************************/
     public User() {
-        this(0, null);
+        this(0, "Billbob", "McDoofenschmirtz");
     }
     
     /***************************************************************
      * 
      ***************************************************************/
-    public User(long id, String name) {
+    public User(long id, String firstName, String lastName) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
     
     public void setId(long id) {
@@ -35,17 +37,26 @@ public class User {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
-    
-    public void setName(String name) {
-        this.name = name;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
-        return String.format("User [id=%s, name=%s]", id, name);
+        return String.format("User [id=%s, firstName=%s, lastName=%s]", id,
+            firstName, lastName);
     }
 
 }

@@ -46,8 +46,9 @@ public class UserController {
 
         /* Build a user list of random users */
         for (long id = 0; id <= 5; id++) {
-            String name = String.format("UserName-%s", id);
-            User u = new User(id, name);
+            String firstName = String.format("FirstName-%s", id);
+            String lastName = String.format("LastName-%s", id);
+            User u = new User(id, firstName, lastName);
             this.userList.add(u);
         }
     }
@@ -95,7 +96,7 @@ public class UserController {
             for(User u : this.userList) {
                 if (u.getId() == id) {
                     int num = this.counter.incrementAndGet();
-                    u.setName(user.getName() + " [" + num + "]");
+                    u.setLastName(user.getLastName() + " [" + num + "]");
                     this.log.info(String.format(
                         "MICK - PUT UPDATED user = %s", u.toString()));
                 }
@@ -121,7 +122,8 @@ public class UserController {
             this.log.error(result.getAllErrors().toString());
             throw new BindException(result);
         } else {
-            User newUser = new User(this.idGenerator.getAndIncrement(), user.getName());
+            User newUser = new User(this.idGenerator.getAndIncrement(), 
+                user.getFirstName(), user.getLastName());
             this.log.info(String.format(
                 "MICK - POST CREATED user = %s", newUser.toString()));
             this.userList.add(newUser);

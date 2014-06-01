@@ -19,12 +19,14 @@ public class UserRestFixture {
     private static String existingUser = 
         "\"user\" : { "
         + "\"id\" : 3, "
-        + "\"name\" : \"minkey bule\" } ";
+        + "\"firstName\" : \"FullMinkey\", "
+        + "\"lastName\" : \"FullBule\" } ";
      
     private static String testUser = 
         "{ "
         + "\"id\" : 3, "
-        + "\"name\" : \"minkey bule\" } ";
+        + "\"firstName\" : \"TestMinkey\", "
+        + "\"lastName\" : \"TestBule\" } ";
      
     /************************************************************************
     * Method description...
