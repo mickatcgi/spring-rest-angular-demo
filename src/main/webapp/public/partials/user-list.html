@@ -1,0 +1,28 @@
+<div class="partial-bg">
+    <hr/>
+    <h2>User Controller</h2>
+    <br/>
+    <table border="1">
+        <thead>
+        <tr>
+            <th style="min-width: 20px;">Id</th>
+            <th style="min-width: 150px;">First name</th>
+            <th style="min-width: 150px;">Last name</th>
+            <th style="width:30px;"></th>
+            <th style="width:30px;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td><a ng-click="editUser(user.id)"
+                   class="btn btn-small btn-primary">edit</a></td>
+            <td><a ng-click="deleteUser(user.id)"
+                   class="btn btn-small btn-danger">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <a ng-click="createNewUser()" class="btn btn-small">create new user</a>
+</div>

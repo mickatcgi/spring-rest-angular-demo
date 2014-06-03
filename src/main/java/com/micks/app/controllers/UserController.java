@@ -90,12 +90,13 @@ public class UserController {
         BindingResult result) throws BindException, Exception {
 
         if (result.hasErrors()) {
-            this.log.error(result.getAllErrors().toString());
+            this.log.error("MICK: PUT - " + result.getAllErrors().toString());
             throw new BindException(result);
         } else {
             for(User u : this.userList) {
                 if (u.getId() == id) {
                     int num = this.counter.incrementAndGet();
+                    u.setFirstName(user.getFirstName());
                     u.setLastName(user.getLastName() + " [" + num + "]");
                     this.log.info(String.format(
                         "MICK - PUT UPDATED user = %s", u.toString()));

@@ -146,35 +146,54 @@ trade360Controllers.service('InstrumentService', function () {
 /** Hello billybob from webstorm **/
 /***************************************************************************/
 
-trade360Controllers.controller('userCtrl',
-    ['$scope', 'User',
+trade360Controllers.controller('UserListCtrl',
+    ['$scope', 'UsersFactory', 'UserFactory', '$location',
+    function ($scope, UsersFactory, UserFactory, $location) {
 
-        function ($scope, User) {
-            var userList = User.query({}, {});
-            $scope.users = userList;
-            console.log("MICK - User Controller returned = " + JSON.stringify(userList[0]));
+        // callback for ng-click 'editUser':
+        $scope.editUser = function (userId) {
+            $location.path('/user-edit/' + userId);
+        };
 
-            var user3 = User.get({}, {'id': 3});
-            var user5 = User.get({}, {'id' : 5});
-            console.log("MICK - User Controller returned one user3 = " + user3.id + " : " + user3.name);
+        // callback for ng-click 'deleteUser':
+        $scope.deleteUser = function (userId) {
+            UserFactory.delete({ id: userId });
+            $scope.users = UsersFactory.query();
+        };
 
-            $scope.user = user3;
-            user3.name = "Billybob McDoodleWhizzer";
-            console.log("MICK - User Controller updating user3 = " + user3.id + " : " + user3.name);
+        // callback for ng-click 'createUser':
+        $scope.createNewUser = function () {
+            $location.path('/user-create');
+        };
 
-            /* Update user3's name */
-            User.update({id: 3}, user3 );    // Calls PUT /users/3/update
-            User.delete({id: 5});           // Calls DELETE /users/5/delete
-            //user3.$save();
-            //user5.$delete();
+        $scope.users = UsersFactory.query();
+    }]);
 
-            var user9 = new User;
-            user9.id = -1;
-            user9.name = "Yertle the Turtle";
-            console.log("MICK - User Controller creating user9 = " + user9.id + " : " + user9.name);
-            User.create(user9);
-            //user9.$save();
+trade360Controllers.controller('UserDetailCtrl',
+    ['$scope', '$routeParams', 'UserFactory', '$location',
+    function ($scope, $routeParams, UserFactory, $location) {
+
+        // callback for ng-click 'updateUser':
+        $scope.updateUser = function () {
+            UserFactory.update({ id: $routeParams.id}, $scope.user);
+            $location.path('/user-list');
+        };
+
+        // callback for ng-click 'cancel':
+        $scope.cancel = function () {
+            $location.path('/user-list');
+        };
+
+        $scope.user = UserFactory.show({ id: $routeParams.id });
+    }]);
+
+trade360Controllers.controller('UserCreationCtrl',
+    ['$scope', 'UsersFactory', '$location',
+    function ($scope, UsersFactory, $location) {
+
+        // callback for ng-click 'createNewUser':
+        $scope.createNewUser = function () {
+            UsersFactory.create($scope.user, { action: 'create' });
+            $location.path('/user-list');
         }
-    ]
-);
-
+    }]);
