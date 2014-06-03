@@ -143,6 +143,7 @@ public class UserController {
     public void deleteUser(@PathVariable int id) {
 
         this.log.info(String.format("MICK - DELETING user with id = %s", id));
+        this.userList.removeIf(u -> u.getId() == id);  
         return;
     }
 }
