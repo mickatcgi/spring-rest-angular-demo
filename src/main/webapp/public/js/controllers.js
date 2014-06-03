@@ -143,7 +143,7 @@ trade360Controllers.service('InstrumentService', function () {
 });
 
 /****************************************************************************/
-/** Hello billybob from webstorm **/
+
 /***************************************************************************/
 
 trade360Controllers.controller('UserListCtrl',
@@ -159,6 +159,14 @@ trade360Controllers.controller('UserListCtrl',
         $scope.deleteUser = function (userId) {
             UserFactory.delete({ id: userId });
             $scope.users = UsersFactory.query();
+        };
+
+        // callback for ng-click 'showUser':
+        $scope.showUser = function (userId) {
+            $scope.user = UserFactory.show({ id: userId });
+            //console.log('MICK - show-user  returned value ='
+            //    + JSON.stringify($scope.user));
+            $location.path('/user-show/' + userId);
         };
 
         // callback for ng-click 'createUser':

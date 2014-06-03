@@ -1,0 +1,24 @@
+<div class="partial-bg">
+    <hr/>
+    <h2>Show User</h2>
+    <br/>
+
+    <table border="1">
+        <thead>
+        <tr>
+            <th style="min-width: 20px;">Id</th>
+            <th style="min-width: 150px;">First name</th>
+            <th style="min-width: 150px;">Last name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td ng-model="user">{{ user.id }}</td>
+            <td ng-model="user">{{ user.firstName }}</td>
+            <td ng-model="user">{{ user.lastName }}</td>
+        </tr>
+        </tbody>
+    </table>
+    <td><button ng-click="editUser(user.id)">Edit</button></td>
+    <td><button ng-click="deleteUser(user.id)">Delete</button></td>
+</div>
