@@ -27,9 +27,9 @@ trade360Services.factory('User', [ '$resource', function ($resource) {
  ******************************************************************************/
 
 trade360Services.factory('UsersFactory', function ($resource) {
-    return $resource('/users', {}, {
+    return $resource('/users/:action', {}, {
         query: { method: 'GET', isArray: true },
-        create: { method: 'POST' }
+        create: { method: 'POST', params: {action: 'create'}}
     })
 });
 
