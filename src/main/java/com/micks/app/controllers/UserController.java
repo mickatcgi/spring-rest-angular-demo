@@ -3,11 +3,9 @@
  */
 package com.micks.app.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
@@ -24,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import com.micks.app.model.User;
+import com.micks.app.services.DummyRepositoryServiceImpl;
+import com.micks.app.services.RepositoryService;
 
 /***************************************************************
  * @author mick
@@ -34,23 +34,14 @@ import com.micks.app.model.User;
 public class UserController {
 
     private Log log = LogFactory.getLog(UserController.class);
-
-    List<User> userList = new ArrayList<>();
-    AtomicInteger counter = new AtomicInteger(0);
-    AtomicLong idGenerator = new AtomicLong(10);
-
+    
+    @Inject
+    RepositoryService repositoryService = new DummyRepositoryServiceImpl();
+    
     /***************************************************************
      * Create some dummy users one time
      ***************************************************************/
     public UserController() {
-
-        /* Build a user list of random users */
-        for (long id = 0; id <= 5; id++) {
-            String firstName = String.format("FirstName-%s", id);
-            String lastName = String.format("LastName-%s", id);
-            User u = new User(id, firstName, lastName);
-            this.userList.add(u);
-        }
     }
 
     /***************************************************************
@@ -62,7 +53,7 @@ public class UserController {
 
         this.log.info("MICK - getUsers returning all users");
 
-        return this.userList;
+        return this.repositoryService.getUsers();
     }
 
     /***************************************************************
@@ -70,13 +61,13 @@ public class UserController {
      ***************************************************************/
     @RequestMapping(value = "/{id}")
     @ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody User getUser(@PathVariable int id) {
+    public @ResponseBody User getUser(@PathVariable int id)  throws Exception {
 
-        User u = this.userList.get(id);
+        User user = this.repositoryService.getUser(id);
         this.log.info(String.format(
-            "MICK - GET lookup id = %s. Found User = %s", id, u.toString()));
+            "MICK - GET lookup id = %s. Found User = %s", id, user.toString()));
 
-        return u;
+        return user;
     }
 
     /************************************************************************
@@ -93,16 +84,7 @@ public class UserController {
             this.log.error("MICK: PUT - " + result.getAllErrors().toString());
             throw new BindException(result);
         } else {
-            for(User u : this.userList) {
-                if (u.getId() == id) {
-                    int num = this.counter.incrementAndGet();
-                    u.setFirstName(user.getFirstName());
-                    u.setLastName(user.getLastName() + " [" + num + "]");
-                    this.log.info(String.format(
-                        "MICK - PUT UPDATED user = %s", u.toString()));
-                }
-            }
-            
+            this.repositoryService.updateUser(user);
         }
         return;
     }
@@ -123,11 +105,9 @@ public class UserController {
             this.log.error(result.getAllErrors().toString());
             throw new BindException(result);
         } else {
-            User newUser = new User(this.idGenerator.getAndIncrement(), 
-                user.getFirstName(), user.getLastName());
+            this.repositoryService.addUser(user);
             this.log.info(String.format(
-                "MICK - POST CREATED user = %s", newUser.toString()));
-            this.userList.add(newUser);
+                "MICK - POST CREATED user = %s", user.toString()));
         }
 
         return user;
@@ -143,7 +123,7 @@ public class UserController {
     public void deleteUser(@PathVariable int id) {
 
         this.log.info(String.format("MICK - DELETING user with id = %s", id));
-        this.userList.removeIf(u -> u.getId() == id);  
+        this.repositoryService.deleteUser(id);  
         return;
     }
 }
