@@ -95,7 +95,7 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
      * @see com.micks.app.services.RepositoryService#saveUser(com.micks.app.model.User)
      ***************************************************************/
     @Override
-    public void addUser(User user) {
+    public void updateUser(User user) {
         if (userExists(user.getId())) {
             // Update existing user with contents of user we got
             User existingUser = this.userMap.get(user.getId());
@@ -113,7 +113,7 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
      * @see com.micks.app.services.RepositoryService#saveUser(com.micks.app.model.User)
      ***************************************************************/
     @Override
-    public void updateUser(User user) {
+    public void addUser(User user) {
         // Create new user - give the user we got an Id and store it
         long id = this.nextAvailableId.incrementAndGet();
         user.setId(id);
