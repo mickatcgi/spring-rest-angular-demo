@@ -32,7 +32,7 @@ function($routeProvider) {
         controller: 'UserCreationCtrl'
     }).when('/user-show/:id', {
         templateUrl: 'partials/user-show.html',
-        controller: 'UserListCtrl'
+        controller: 'UserDetailCtrl'
     }).otherwise({
 		/*
 		 * Any href/link that doesn't match the above list, e.g. /bogus will end
