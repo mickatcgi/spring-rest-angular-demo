@@ -10,17 +10,6 @@ var trade360Services = angular.module('trade360Services', [ 'ngResource' ]);
  * Controllers - configure interaction with back-end
  ******************************************************************************/
 
-trade360Services.factory('UsersFactory', function ($resource) {
-    return $resource('/users/:action', {}, {
-        query: { method: 'GET', isArray: true },
-        create: { method: 'POST', params: {action: 'create'}}
-    })
-});
-
-/*******************************************************************************
- * Controllers - configure interaction with back-end
- ******************************************************************************/
-
 trade360Services.factory('UserFactory', function ($resource) {
     return $resource('/users/:id/:action',
         {
@@ -29,6 +18,8 @@ trade360Services.factory('UserFactory', function ($resource) {
         {
             show: { method: 'GET' },
             update: { method: 'PUT', params: {id: '@id', action: 'update'} },
-            delete: { method: 'DELETE', params: {id: '@id', action: 'delete'} }
+            delete: { method: 'DELETE', params: {id: '@id', action: 'delete'} },
+            query: { method: 'GET', isArray: true },
+            create: { method: 'POST', params: {action: 'create'}}
         })
 });

@@ -13,8 +13,8 @@ var users_url = base_url + "users";
  * Controller
  ***************************************************************************/
 trade360Controllers.controller('UserListCtrl',
-    ['$scope', 'UsersFactory', 'UserFactory', '$location',
-        function ($scope, UsersFactory, UserFactory, $location) {
+    ['$scope', 'UserFactory', '$location',
+        function ($scope, UserFactory, $location) {
 
             // callback for ng-click 'editUser':
             $scope.editUser = function (userId) {
@@ -37,7 +37,7 @@ trade360Controllers.controller('UserListCtrl',
                 $location.path('/user-create');
             };
 
-            $scope.users = UsersFactory.query();
+            $scope.users = UserFactory.query();
         }]);
 
 /****************************************************************************
@@ -65,12 +65,12 @@ trade360Controllers.controller('UserDetailCtrl',
  * Controller
  ***************************************************************************/
 trade360Controllers.controller('UserCreationCtrl',
-    ['$scope', 'UsersFactory', '$location',
-        function ($scope, UsersFactory, $location) {
+    ['$scope', 'UserFactory', '$location',
+        function ($scope, UserFactory, $location) {
 
             // callback for ng-click 'createNewUser':
             $scope.createNewUser = function () {
-                UsersFactory.create($scope.user);
+                UserFactory.create($scope.user);
                 $location.path('/user-list');
             }
         }]);
