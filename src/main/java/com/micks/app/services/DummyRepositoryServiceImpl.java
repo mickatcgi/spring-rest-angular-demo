@@ -17,8 +17,9 @@ import com.micks.app.controllers.UserController;
 import com.micks.app.model.User;
 
 /***************************************************************
- * Dummy repository implementation. Replace with real one later using the same
- * Interface
+ * Dummy repository implementation. Replace with real one later 
+ * using the same Interface. A repository is a facade for a
+ * database or other persistent store.
  * 
  * @author mick
  ***************************************************************/
@@ -27,7 +28,13 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
 
     private Log log = LogFactory.getLog(DummyRepositoryServiceImpl.class);
 
+    // Initialize our id generator (primary key simulator)
+    private AtomicLong nextAvailableId = new AtomicLong(0);
+
+    // Use a map for easy insertion and retrieval - simulate a DB
     private Map<Long, User> userMap = new HashMap<>();
+
+    // Seed the repository with dummy data.
     private String[][] userArray = {
         { "Billybob", "Thornton" },
         { "Jimbob", "Pitt" },
@@ -35,10 +42,6 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
         { "Abraham", "Lincoln" },
         { "Jeremiah", "Bullfrog" }
     };
-
-    // Initialize it and use it for the dummy list and any new additions
-    // we make at the UI
-    private AtomicLong nextAvailableId = new AtomicLong(0);
 
     /***************************************************************
      * 

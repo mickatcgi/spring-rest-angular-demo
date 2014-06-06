@@ -12,16 +12,7 @@ trade360app.config([ '$routeProvider',
  * Controller names match name in controllers.js
  ****************************************************************************/
 function($routeProvider) {
-    $routeProvider.when('/instrumentController', {
-        templateUrl: 'partials/instrument.html',
-        controller: 'instrumentCtrl'
-    }).when('/workItemController', {
-        templateUrl: 'partials/workItem.html',
-        controller: 'workItemCtrl'
-    }).when('/customerController', {
-        templateUrl: 'partials/customer.html',
-        controller: 'customerCtrl'
-    }).when('/user-list', {
+    $routeProvider.when('/user-list', {
         templateUrl: 'partials/user-list.html',
         controller: 'UserListCtrl'
     }).when('/user-edit/:id', {
