@@ -16,27 +16,30 @@ trade360Controllers.controller('UserListCtrl',
     ['$scope', 'UserFactory', '$location',
         function ($scope, UserFactory, $location) {
 
-            // callback for ng-click 'editUser':
+            // callback for ng-click 'editUser' - launch user-edit page
             $scope.editUser = function (userId) {
                 $location.path('/user-edit/' + userId);
             };
 
-            // callback for ng-click 'deleteUser':
-            $scope.deleteUser = function (userId) {
-                UserFactory.delete({ id: userId });
-                $scope.users = UsersFactory.query();
-            };
-
-            // callback for ng-click 'showUser':
+            // callback for ng-click 'showUser' - launch user-show page
             $scope.showUser = function (userId) {
                 $location.path('/user-show/' + userId);
             };
 
-            // callback for ng-click 'createUser':
+            // callback for ng-click 'createUser' - launch user-create page
             $scope.createNewUser = function () {
                 $location.path('/user-create');
             };
 
+            // callback for ng-click 'deleteUser' - delete and redisplay list
+            $scope.deleteUser = function (userId) {
+                UserFactory.delete({ id: userId });
+                $scope.users = UserFactory.query();
+            };
+
+            // Default action just for invoking the controller
+            // Same end result as the index action in a Rails controller
+            console.log("MICK - UserFactory.query() getting list of users");
             $scope.users = UserFactory.query();
         }]);
 
