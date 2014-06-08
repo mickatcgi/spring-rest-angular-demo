@@ -20,7 +20,7 @@ function($routeProvider) {
         controller: 'UserDetailCtrl'
     }).when('/user-create', {
         templateUrl: 'partials/user-create.html',
-        controller: 'UserCreationCtrl'
+        controller: 'UserListCtrl'
     }).when('/user-show/:id', {
         templateUrl: 'partials/user-show.html',
         controller: 'UserDetailCtrl'

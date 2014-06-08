@@ -26,10 +26,16 @@ trade360Controllers.controller('UserListCtrl',
                 $location.path('/user-show/' + userId);
             };
 
-            // callback for ng-click 'createUser' - launch user-create page
-            $scope.createNewUser = function () {
+            // callback for ng-click 'newUser' - launch user-create page
+            $scope.newUser = function () {
                 $location.path('/user-create');
             };
+
+            // callback for ng-click 'createNewUser':
+            $scope.createNewUser = function () {
+                UserFactory.create($scope.user);
+                $location.path('/user-list');
+            }
 
             // callback for ng-click 'deleteUser' - delete and redisplay list
             $scope.deleteUser = function (userId) {
@@ -74,9 +80,4 @@ trade360Controllers.controller('UserCreationCtrl',
     ['$scope', 'UserFactory', '$location',
         function ($scope, UserFactory, $location) {
 
-            // callback for ng-click 'createNewUser':
-            $scope.createNewUser = function () {
-                UserFactory.create($scope.user);
-                $location.path('/user-list');
-            }
         }]);
