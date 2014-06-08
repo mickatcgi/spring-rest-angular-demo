@@ -37,10 +37,13 @@ trade360Controllers.controller('UserListCtrl',
                 $scope.users = UserFactory.query();
             };
 
-            // Default action just for invoking the controller
-            // Same end result as the index action in a Rails controller
-            console.log("MICK - UserFactory.query() getting list of users");
-            $scope.users = UserFactory.query();
+            // callback for auto-load 'listUsers' - display list
+            // Method invoked on page load from data-ng-init call
+            $scope.listUsers = function (userId) {
+                console.log("MICK - listUsers() getting list of users");
+                $scope.users = UserFactory.query();
+            };
+
         }]);
 
 /****************************************************************************
