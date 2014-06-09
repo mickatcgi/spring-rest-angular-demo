@@ -13,16 +13,18 @@ var users_url = base_url + "users";
  * Controller
  ***************************************************************************/
 trade360Controllers.controller('UserListCtrl',
-    ['$scope', 'UserFactory', '$location',
-        function ($scope, UserFactory, $location) {
+    ['$scope', '$routeParams', 'UserFactory', '$location',
+        function ($scope, $routeParams, UserFactory, $location) {
 
             // callback for ng-click 'editUser' - launch user-edit page
             $scope.editUser = function (userId) {
+                $scope.user = UserFactory.show({ id: $routeParams.id });
                 $location.path('/user-edit/' + userId);
             };
 
             // callback for ng-click 'showUser' - launch user-show page
             $scope.showUser = function (userId) {
+                console.log("MICK - showUser() showing user with id = " + userId);
                 $location.path('/user-show/' + userId);
             };
 
@@ -45,9 +47,15 @@ trade360Controllers.controller('UserListCtrl',
 
             // callback for auto-load 'listUsers' - display list
             // Method invoked on page load from data-ng-init call
-            $scope.listUsers = function (userId) {
+            $scope.listUsers = function () {
                 console.log("MICK - listUsers() getting list of users");
                 $scope.users = UserFactory.query();
+            };
+
+            // General get function used by pages that GET a single user
+            $scope.getUser = function () {
+                console.log("MICK - getUser() getting one user");
+                $scope.user = UserFactory.show({ id: $routeParams.id});
             };
 
         }]);
@@ -70,14 +78,6 @@ trade360Controllers.controller('UserDetailCtrl',
                 $location.path('/user-list');
             };
 
-            $scope.user = UserFactory.show({ id: $routeParams.id });
-        }]);
-
-/****************************************************************************
- * Controller
- ***************************************************************************/
-trade360Controllers.controller('UserCreationCtrl',
-    ['$scope', 'UserFactory', '$location',
-        function ($scope, UserFactory, $location) {
 
         }]);
+
