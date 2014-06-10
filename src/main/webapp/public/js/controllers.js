@@ -18,8 +18,14 @@ trade360Controllers.controller('UserListCtrl',
 
             // callback for ng-click 'editUser' - launch user-edit page
             $scope.editUser = function (userId) {
-                $scope.user = UserFactory.show({ id: $routeParams.id });
+                console.log("MICK - editUser() editing user with id = " + userId);
                 $location.path('/user-edit/' + userId);
+            };
+
+            // callback for ng-click 'updateUser':
+            $scope.updateUser = function (userId) {
+                UserFactory.update({ id: userId}, $scope.user);
+                $location.path('/user-list');
             };
 
             // callback for ng-click 'showUser' - launch user-show page
@@ -42,7 +48,7 @@ trade360Controllers.controller('UserListCtrl',
             // callback for ng-click 'deleteUser' - delete and redisplay list
             $scope.deleteUser = function (userId) {
                 UserFactory.delete({ id: userId });
-                $scope.users = UserFactory.query();
+                $location.path('/user-list');
             };
 
             // callback for auto-load 'listUsers' - display list
@@ -54,30 +60,14 @@ trade360Controllers.controller('UserListCtrl',
 
             // General get function used by pages that GET a single user
             $scope.getUser = function () {
-                console.log("MICK - getUser() getting one user");
+                console.log("MICK - getUser() getting one user. id = " + $routeParams.id);
                 $scope.user = UserFactory.show({ id: $routeParams.id});
-            };
-
-        }]);
-
-/****************************************************************************
- * Controller
- ***************************************************************************/
-trade360Controllers.controller('UserDetailCtrl',
-    ['$scope', '$routeParams', 'UserFactory', '$location',
-        function ($scope, $routeParams, UserFactory, $location) {
-
-            // callback for ng-click 'updateUser':
-            $scope.updateUser = function () {
-                UserFactory.update({ id: $routeParams.id}, $scope.user);
-                $location.path('/user-list');
             };
 
             // callback for ng-click 'cancel':
             $scope.cancel = function () {
                 $location.path('/user-list');
             };
-
 
         }]);
 

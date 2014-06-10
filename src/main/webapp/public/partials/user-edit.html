@@ -1,4 +1,4 @@
-<div class="partial-bg">
+<div class="partial-bg" data-ng-init="getUser()">
     <hr/>
     <h2>Edit User</h2>
     <br/>
@@ -20,7 +20,7 @@
         </div>
         <div class="control-group">
             <div class="controls">
-                <button ng-click="updateUser()" style='margin:10px;'>Update User</button>
+                <button ng-click="updateUser(user.id)" style='margin:10px;'>Update User</button>
                 <button ng-click="cancel()" style='margin:10px;'>Cancel</button>
             </div>
         </div>

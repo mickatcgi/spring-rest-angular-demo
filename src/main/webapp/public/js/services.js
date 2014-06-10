@@ -16,7 +16,7 @@ trade360Services.factory('UserFactory', function ($resource) {
             id: "@id"
         },
         {
-            show: { method: 'GET', params: {id: '@id'} },
+            show: { method: 'GET', params: {id: '@id'}, isArray: false },
             update: { method: 'PUT', params: {id: '@id', action: 'update'} },
             delete: { method: 'DELETE', params: {id: '@id', action: 'delete'} },
             query: { method: 'GET', isArray: true },
