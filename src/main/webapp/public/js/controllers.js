@@ -10,7 +10,15 @@ var base_url = 'http://mint1-laptop:8090/';
 var users_url = base_url + "users";
 
 /****************************************************************************
- * Controller
+ * Controller - uses alternating sequences of REST calls and page loads to
+ * retrieve the right model objects and and show the right pages:
+ *
+ *  - editUser      --> getUser         --> updateUser  --> listUsers
+ *  - newUser       --> createNewUser   --> listUsers
+ *  - showUser      --> getUser
+ *  - deleteUser    --> listUsers
+ *  - cancel        --> listUsers
+ *
  ***************************************************************************/
 trade360Controllers.controller('UserListCtrl',
     ['$scope', '$routeParams', 'UserFactory', '$location',
