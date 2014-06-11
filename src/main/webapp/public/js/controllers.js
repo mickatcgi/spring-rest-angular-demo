@@ -20,7 +20,7 @@ var trade360Controllers = angular.module('trade360Controllers', []);
  *  - cancel        --> listUsers
  *
  ***************************************************************************/
-trade360Controllers.controller('UserListCtrl',
+trade360Controllers.controller('UserController',
     ['$scope', '$routeParams', 'UserFactory', '$location', '$route',
         function ($scope, $routeParams, UserFactory, $location, $route) {
 

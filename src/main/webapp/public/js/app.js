@@ -14,20 +14,20 @@ trade360app.config([ '$routeProvider',
 function($routeProvider) {
     $routeProvider.when('/user-list', {
         templateUrl: 'partials/user-list.html',
-        controller: 'UserListCtrl'
+        controller: 'UserController'
     }).when('/user-create', {
         templateUrl: 'partials/user-create.html',
-        controller: 'UserListCtrl'
+        controller: 'UserController'
     }).when('/user-edit/:id', {
         templateUrl: 'partials/user-edit.html',
-        controller: 'UserListCtrl'
+        controller: 'UserController'
     }).when('/user-show/:id', {
         templateUrl: 'partials/user-show.html',
-        controller: 'UserListCtrl'
+        controller: 'UserController'
     }).otherwise({
 		/*
 		 * Any href/link that doesn't match the above list, e.g. /bogus will end
-		 * up in here.
+		 * up in here and be redirected to the home page.
 		 */
 		redirectTo : '/index'
 	});
