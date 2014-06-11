@@ -32,8 +32,10 @@ trade360Controllers.controller('UserListCtrl',
 
             // callback for ng-click 'updateUser':
             $scope.updateUser = function (userId) {
-                UserFactory.update({ id: userId}, $scope.user);
-                $location.path('/user-list');
+                UserFactory.update({ id: userId}, $scope.user).$promise.then(function(result) {
+                    console.log("MICK updateUser promise returned = " + JSON.stringify(result));
+                    $location.path('/user-list');
+                });
             };
 
             // callback for ng-click 'showUser' - launch user-show page
@@ -49,14 +51,18 @@ trade360Controllers.controller('UserListCtrl',
 
             // callback for ng-click 'createNewUser':
             $scope.createNewUser = function () {
-                UserFactory.create($scope.user);
-                $location.path('/user-list');
+                UserFactory.create($scope.user).$promise.then(function(result) {
+                    console.log("MICK createUser promise returned = " + JSON.stringify(result));
+                    $location.path('/user-list');
+                });
             }
 
             // callback for ng-click 'deleteUser' - delete and redisplay list
             $scope.deleteUser = function (userId) {
-                UserFactory.delete({ id: userId });
-                $location.path('/user-list');
+                UserFactory.delete({ id: userId }).$promise.then(function(result) {
+                    console.log("MICK delete promise returned = " + JSON.stringify(result));
+                    $location.path('/user-list');
+                });
             };
 
             // callback for auto-load 'listUsers' - display list
