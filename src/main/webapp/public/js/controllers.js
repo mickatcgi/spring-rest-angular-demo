@@ -6,8 +6,8 @@
 
 var trade360Controllers = angular.module('trade360Controllers', []);
 
-var base_url = 'http://mint1-laptop:8090/';
-var users_url = base_url + "users";
+//var base_url = 'http://mint1-laptop:8090/';
+//var users_url = base_url + "users";
 
 /****************************************************************************
  * Controller - uses alternating sequences of REST calls and page loads to
@@ -21,8 +21,8 @@ var users_url = base_url + "users";
  *
  ***************************************************************************/
 trade360Controllers.controller('UserListCtrl',
-    ['$scope', '$routeParams', 'UserFactory', '$location',
-        function ($scope, $routeParams, UserFactory, $location) {
+    ['$scope', '$routeParams', 'UserFactory', '$location', '$route',
+        function ($scope, $routeParams, UserFactory, $location, $route) {
 
             // callback for ng-click 'editUser' - launch user-edit page
             $scope.editUser = function (userId) {
@@ -61,6 +61,12 @@ trade360Controllers.controller('UserListCtrl',
             $scope.deleteUser = function (userId) {
                 UserFactory.delete({ id: userId }).$promise.then(function(result) {
                     console.log("MICK delete promise returned = " + JSON.stringify(result));
+
+                    // When invoked from show user page this causes list GET to
+                    // be executed twice but from main user list page GET is
+                    // only invoked once.
+                    $route.reload();
+
                     $location.path('/user-list');
                 });
             };
