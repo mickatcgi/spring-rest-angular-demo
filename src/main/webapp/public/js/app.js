@@ -2,8 +2,8 @@
 
 /* App Module - configure links to views and links to controllers */
 
-var trade360app = angular.module('trade360app', [ 'ngRoute',
-		'trade360Controllers', 'trade360Services' ]);
+var trade360app = angular.module('micksDemoApp', [ 'ngRoute',
+		'micksDemoControllers', 'micksDemoServices' ]);
 
 trade360app.config([ '$routeProvider',
 

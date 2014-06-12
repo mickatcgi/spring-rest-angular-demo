@@ -4,10 +4,8 @@
  * Controllers - configure interaction with back-end
  ******************************************************************************/
 
-var trade360Controllers = angular.module('trade360Controllers', []);
+var micksDemoControllers = angular.module('micksDemoControllers', []);
 
-//var base_url = 'http://mint1-laptop:8090/';
-//var users_url = base_url + "users";
 
 /****************************************************************************
  * Controller - uses alternating sequences of REST calls and page loads to
@@ -20,7 +18,7 @@ var trade360Controllers = angular.module('trade360Controllers', []);
  *  - cancel        --> listUsers
  *
  ***************************************************************************/
-trade360Controllers.controller('UserController',
+micksDemoControllers.controller('UserController',
     ['$scope', '$routeParams', 'UserFactory', '$location', '$route',
         function ($scope, $routeParams, UserFactory, $location, $route) {
 

@@ -4,13 +4,13 @@
  * Controllers - configure interaction with back-end
  ******************************************************************************/
 
-var trade360Services = angular.module('trade360Services', [ 'ngResource' ]);
+var micksDemoServices = angular.module('micksDemoServices', [ 'ngResource' ]);
 
 /*******************************************************************************
  * Controllers - configure interaction with back-end
  ******************************************************************************/
 
-trade360Services.factory('UserFactory', function ($resource) {
+micksDemoServices.factory('UserFactory', function ($resource) {
     return $resource('/users/:id/:action',
         {
             id: "@id"
