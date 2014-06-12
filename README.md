@@ -1,5 +1,4 @@
-Instructions on how to clone and how to run.
-=======================
+Description
 
 - A simple single page application, one angular controller, one factory and CRUD REST calls.
 - A single Spring MVC controller with REST API's, a single model, and dummy back-end repository with dummy model data.
@@ -11,5 +10,5 @@ mvn clean package && java -jar target/spring-rest-angular-demo-1.0.0.jar
 
 How to clone
 =====================
-git clone
+git clone https://github.com/mickatcgi/spring-rest-angular-demo.git
 
