@@ -45,20 +45,21 @@ micksDemoControllers.controller('UserController',
             $scope.updateUser = function (userId) {
                 UserFactory.update({ id: userId}, $scope.user).$promise.then(
                     function (result) {
-                        // Success
+                        // Success - return to user list page
                         console.log("MICK updateUser promise success = "
                             + JSON.stringify(result));
+                        $location.path('/user-list');
                     },
                     function (reason) {
-                        // Failure
+                        // Failure - stay on the same screen and display error message
                         console.log("MICK updateUser promise failed = "
-                            + JSON.stringify(reason));
+                            + JSON.stringify(getErrorDetails(reason)));
+                        $scope.errorMessage = getErrorDetails(reason);
                         $timeout(function() {
                             // Wrap in timeout function to avoid $digest error
-                            alert(getErrorDetails(reason));
-                        }, 0, false);
+                            //alert(getErrorDetails(reason));
+                       }, 0, false);
                     });
-                $location.path('/user-list');
             };
 
             // Launches the user-create page in preparation for entering new

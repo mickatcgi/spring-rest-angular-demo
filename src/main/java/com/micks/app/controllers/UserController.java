@@ -86,7 +86,7 @@ public class UserController {
         } else {
             this.repositoryService.updateUser(user);
             //if (true) {
-            //    // Dummy exception to trigger Angular error handling code
+                // Dummy exception to trigger Angular error handling code
             //    throw new Exception("Bogus update error from Mick");
             //}
         }
