@@ -34,10 +34,10 @@ import com.micks.app.services.RepositoryService;
 public class UserController {
 
     private Log log = LogFactory.getLog(UserController.class);
-    
+
     @Inject
     RepositoryService repositoryService = new DummyRepositoryServiceImpl();
-    
+
     /***************************************************************
      * Create some dummy users one time
      ***************************************************************/
@@ -61,7 +61,7 @@ public class UserController {
      ***************************************************************/
     @RequestMapping(value = "/{id}")
     @ResponseStatus(value = HttpStatus.OK)
-    public @ResponseBody User getUser(@PathVariable int id)  throws Exception {
+    public @ResponseBody User getUser(@PathVariable int id) throws Exception {
 
         User user = this.repositoryService.getUser(id);
         this.log.info(String.format(
@@ -85,6 +85,10 @@ public class UserController {
             throw new BindException(result);
         } else {
             this.repositoryService.updateUser(user);
+            //if (true) {
+            //    // Dummy exception to trigger Angular error handling code
+            //    throw new Exception("Bogus update error from Mick");
+            //}
         }
         return;
     }
@@ -123,7 +127,7 @@ public class UserController {
     public void deleteUser(@PathVariable int id) {
 
         this.log.info(String.format("MICK - DELETING user with id = %s", id));
-        this.repositoryService.deleteUser(id);  
+        this.repositoryService.deleteUser(id);
         return;
     }
 }

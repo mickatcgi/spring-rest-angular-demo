@@ -19,8 +19,8 @@ var micksDemoControllers = angular.module('micksDemoControllers', []);
  *
  ***************************************************************************/
 micksDemoControllers.controller('UserController',
-    ['$scope', '$routeParams', 'UserFactory', '$location', '$route',
-        function ($scope, $routeParams, UserFactory, $location, $route) {
+    ['$scope', '$routeParams', 'UserFactory', '$location', '$route', '$timeout',
+        function ($scope, $routeParams, UserFactory, $location, $route, $timeout) {
 
             // Lists all the users. Method invoked on page load from data-ng-init call
             $scope.listUsers = function () {
@@ -43,10 +43,22 @@ micksDemoControllers.controller('UserController',
 
             // Performs the update operation on an existing user
             $scope.updateUser = function (userId) {
-                UserFactory.update({ id: userId}, $scope.user).$promise.then(function (result) {
-                    console.log("MICK updateUser promise returned = " + JSON.stringify(result));
-                    $location.path('/user-list');
-                });
+                UserFactory.update({ id: userId}, $scope.user).$promise.then(
+                    function (result) {
+                        // Success
+                        console.log("MICK updateUser promise success = "
+                            + JSON.stringify(result));
+                    },
+                    function (reason) {
+                        // Failure
+                        console.log("MICK updateUser promise failed = "
+                            + JSON.stringify(reason));
+                        $timeout(function() {
+                            // Wrap in timeout function to avoid $digest error
+                            alert(getErrorDetails(reason));
+                        }, 0, false);
+                    });
+                $location.path('/user-list');
             };
 
             // Launches the user-create page in preparation for entering new
@@ -57,28 +69,44 @@ micksDemoControllers.controller('UserController',
 
             // Performs the create operation a new user after entering all new user details
             $scope.createNewUser = function () {
-                UserFactory.create($scope.user).$promise.then(function (result) {
-                    console.log("MICK createUser promise returned = " + JSON.stringify(result));
-                    $location.path('/user-list');
-                });
+                UserFactory.create($scope.user).$promise.then(
+                    function (result) {
+                        // Success
+                        console.log("MICK createUser promise returned = " + JSON.stringify(result));
+                    },
+                    function (reason) {
+                        // Failure
+                        console.log("MICK createUser promise failed = "
+                            + JSON.stringify(reason));
+                        alert(getErrorDetails(reason));
+                    });
+                $location.path('/user-list');
             }
 
             // Delete a user and return to the user-list or redisplay the user-list
             // if already on that page.
             $scope.deleteUser = function (userId) {
-                UserFactory.delete({ id: userId }).$promise.then(function (result) {
-                    console.log("MICK delete promise returned = " + JSON.stringify(result));
+                UserFactory.delete({ id: userId }).$promise.then(
+                    function (result) {
+                        // Success
+                        console.log("MICK delete promise returned = " + JSON.stringify(result));
+                    },
+                    function (reason) {
+                        // Failure
+                        console.log("MICK deleteUser promise failed = "
+                            + JSON.stringify(reason));
+                        alert(getErrorDetails(reason));
+                    });
 
-                    // We really only need to do a reload if we're on the user-list
-                    // page since it doesn't reload automatically so after a delete
-                    // the list never gets refreshed. Deletes from other pages
-                    // work ok because they trigger a user-list reload by default
-                    if ($location.path() == '/user-list') {
-                        $route.reload();
-                    }
+                // We really only need to do a reload if we're on the user-list
+                // page since it doesn't reload automatically so after a delete
+                // the list never gets refreshed. Deletes from other pages
+                // work ok because they trigger a user-list reload by default
+                if ($location.path() == '/user-list') {
+                    $route.reload();
+                }
 
-                    $location.path('/user-list');
-                });
+                $location.path('/user-list');
             };
 
             // General get function used by pages that GET a single user, e.g.
@@ -92,6 +120,13 @@ micksDemoControllers.controller('UserController',
             $scope.cancel = function () {
                 $location.path('/user-list');
             };
+
+            // Take the reason code and return a useful error message
+            var getErrorDetails = function (reason) {
+                var msg = "Action failed with error: " + reason.data.errorMessage;
+                msg += " : response status = " + reason.status;
+                return msg;
+            }
 
         }]);
 
