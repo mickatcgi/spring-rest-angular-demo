@@ -13,7 +13,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
-import com.micks.app.controllers.UserController;
+import com.micks.app.model.Role;
 import com.micks.app.model.User;
 
 /***************************************************************
@@ -29,10 +29,12 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
     private Log log = LogFactory.getLog(DummyRepositoryServiceImpl.class);
 
     // Initialize our id generator (primary key simulator)
-    private AtomicLong nextAvailableId = new AtomicLong(0);
+    private AtomicLong generatedUserId = new AtomicLong(0);
+    private AtomicLong generatedRoleId = new AtomicLong(0);
 
     // Use a map for easy insertion and retrieval - simulate a DB
     private Map<Long, User> userMap = new HashMap<>();
+    private List<Role> roles = new ArrayList<>();
 
     // Seed the repository with dummy data.
     private String[][] userArray = {
@@ -42,6 +44,8 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
         { "Abraham", "Lincoln" },
         { "Jeremiah", "Bullfrog" }
     };
+    
+    private String [] rolesArray = {"Member", "Admin", "Guest"};
 
     /***************************************************************
      * 
@@ -57,13 +61,28 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
     public void initDummyUserList() {
         // Convert the string array to a HashMap for easy access
         for (String[] userNames : this.userArray) {
-            Long id = this.nextAvailableId.getAndIncrement();
+            Long id = this.generatedUserId.getAndIncrement();
             User user = new User(id,
                 userNames[0],
-                userNames[1]);
+                userNames[1],
+                true);
             this.userMap.put(id, user);
         }
         log.info("MICK - Repository initializing dummy user list");
+    }
+
+    /***************************************************************
+     * This DUMMY implementation hard-codes a list of rles. We can replace this
+     * repository impl with a real one later and leave the interface in place.
+     ***************************************************************/
+    public void initDummyRoleList() {
+        // Convert the string array to a HashMap for easy access
+        for (String roleName : this.rolesArray) {
+            Long id = this.generatedRoleId.getAndIncrement();
+            Role role = new Role(id, roleName);
+            this.roles.add(role);
+        }
+        log.info("MICK - Repository initializing dummy role list");
     }
 
     /***************************************************************
@@ -104,6 +123,7 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
             User existingUser = this.userMap.get(user.getId());
             existingUser.setFirstName(user.getFirstName());
             existingUser.setLastName(user.getLastName());
+            existingUser.setEnabled(user.isEnabled());
             log.info("MICK - update user = " + existingUser.toString());
         } else {
             log.info("MICK - update user NOT FOUND = " + user.toString());
@@ -118,7 +138,7 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
     @Override
     public void addUser(User user) {
         // Create new user - give the user we got an Id and store it
-        long id = this.nextAvailableId.incrementAndGet();
+        long id = this.generatedUserId.incrementAndGet();
         user.setId(id);
         log.info("MICK - creating new user = " + user.toString());
         this.userMap.put(id, user);
@@ -143,6 +163,13 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
      ***************************************************************/
     private boolean userExists(long id) {
         return this.userMap.containsKey(id);
+    }
+    
+    /***************************************************************
+     * @return
+     ***************************************************************/
+    public List<Role> getRoles() {
+        return this.roles;
     }
 
 }

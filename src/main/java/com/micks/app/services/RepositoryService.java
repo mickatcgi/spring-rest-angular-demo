@@ -5,6 +5,7 @@ package com.micks.app.services;
 
 import java.util.List;
 
+import com.micks.app.model.Role;
 import com.micks.app.model.User;
 
 /***************************************************************
@@ -28,4 +29,7 @@ public interface RepositoryService {
     
     // Delete user given the id
     public abstract void deleteUser(long id);
+    
+    // Get a list of roles for each user to choose
+    public abstract List<Role> getRoles();
 }

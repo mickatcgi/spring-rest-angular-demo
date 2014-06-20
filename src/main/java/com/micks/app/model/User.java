@@ -12,21 +12,23 @@ public class User {
     private long id;
     private String firstName;
     private String lastName;
+    private boolean enabled;
 
     /***************************************************************
      * 
      ***************************************************************/
     public User() {
-        this(0, "Billbob", "McDoofenschmirtz");
+        this(0, "Billbob", "McDoofenschmirtz", true);
     }
     
     /***************************************************************
      * 
      ***************************************************************/
-    public User(long id, String firstName, String lastName) {
+    public User(long id, String firstName, String lastName, boolean enabled) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.enabled = enabled;
     }
     
     public void setId(long id) {
@@ -53,10 +55,19 @@ public class User {
         this.lastName = lastName;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     @Override
     public String toString() {
-        return String.format("User [id=%s, firstName=%s, lastName=%s]", id,
-            firstName, lastName);
+        return String.format(
+            "User [id=%s, firstName=%s, lastName=%s, enabled=%s]", id,
+            firstName, lastName, enabled);
     }
 
 }

@@ -11,6 +11,7 @@
             <th style="min-width: 20px;">Id</th>
             <th style="min-width: 150px;">First name</th>
             <th style="min-width: 150px;">Last name</th>
+            <th style="min-width: 50px;">Enabled</th>
             <th style="width:30px;"></th>
             <th style="width:30px;"></th>
             <th style="width:30px;"></th>
@@ -21,6 +22,10 @@
             <td>{{ user.id }}</td>
             <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>
+            <td>
+                <input type="checkbox" name="enabled" ng-model="user.enabled"
+                       disabled="disabled">
+            </td>
             <td><button ng-click="editUser(user.id)">edit</button></td>
             <td><button ng-click="deleteUser(user.id)">delete</button></td>
             <td><button ng-click="showUser(user.id)">show</button></td>
