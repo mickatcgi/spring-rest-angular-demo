@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.micks.app.model;
 
 /***************************************************************
@@ -12,22 +10,25 @@ public class User {
     private long id;
     private String firstName;
     private String lastName;
+    private Role role;
     private boolean enabled;
 
     /***************************************************************
      * 
      ***************************************************************/
     public User() {
-        this(0, "Billbob", "McDoofenschmirtz", true);
+        this(0, "Billbob", "McDoofenschmirtz", null, true);
     }
     
     /***************************************************************
      * 
      ***************************************************************/
-    public User(long id, String firstName, String lastName, boolean enabled) {
+    public User(long id, String firstName, String lastName, 
+        Role role, boolean enabled) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.role = role;
         this.enabled = enabled;
     }
     
@@ -63,11 +64,19 @@ public class User {
         this.enabled = enabled;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
         return String.format(
-            "User [id=%s, firstName=%s, lastName=%s, enabled=%s]", id,
-            firstName, lastName, enabled);
+            "User [id=%s, firstName=%s, lastName=%s, role=%s, enabled=%s]", id,
+            firstName, lastName, role, enabled);
     }
 
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.commons.logging.Log;
@@ -51,6 +52,11 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
      * 
      ***************************************************************/
     public DummyRepositoryServiceImpl() {
+        
+        // Initialize roles first because they are used by user
+        this.initDummyRoleList();
+        
+        // Initialize users last since they need roles;
         this.initDummyUserList();
     }
 
@@ -65,6 +71,7 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
             User user = new User(id,
                 userNames[0],
                 userNames[1],
+                this.getRole(this.getRandomRoleId()),
                 true);
             this.userMap.put(id, user);
         }
@@ -123,6 +130,7 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
             User existingUser = this.userMap.get(user.getId());
             existingUser.setFirstName(user.getFirstName());
             existingUser.setLastName(user.getLastName());
+            existingUser.setRole(user.getRole());
             existingUser.setEnabled(user.isEnabled());
             log.info("MICK - update user = " + existingUser.toString());
         } else {
@@ -170,6 +178,25 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
      ***************************************************************/
     public List<Role> getRoles() {
         return this.roles;
+    }
+    
+    /***************************************************************
+     * @param id
+     * @return
+     ***************************************************************/
+    public Role getRole(long id) {
+        return this.roles.get((int)id);
+    }
+    
+    /***************************************************************
+     * @return
+     ***************************************************************/
+    private int getRandomRoleId() {
+        Random random = new Random();
+        int randomInt = random.nextInt(this.rolesArray.length);
+        log.info(String.format("MICK - Roles length = %s, Random key = %s",
+            this.rolesArray.length, randomInt));
+        return randomInt;
     }
 
 }
