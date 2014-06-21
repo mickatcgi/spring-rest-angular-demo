@@ -5,6 +5,9 @@
 var trade360app = angular.module('micksDemoApp', [ 'ngRoute',
 		'micksDemoControllers', 'micksDemoServices' ]);
 
+var micksDemoControllers = angular.module('micksDemoControllers', []);
+
+
 trade360app.config([ '$routeProvider',
 
 /****************************************************************************

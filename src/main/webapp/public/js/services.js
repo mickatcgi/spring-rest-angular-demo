@@ -1,13 +1,13 @@
 'use strict';
 
 /*******************************************************************************
- * Controllers - configure interaction with back-end
+ * Factories - configure interaction with back-end
  ******************************************************************************/
 
 var micksDemoServices = angular.module('micksDemoServices', [ 'ngResource' ]);
 
 /*******************************************************************************
- * Controllers - configure interaction with back-end
+ * Factory - maps to user controller on back-end
  ******************************************************************************/
 
 micksDemoServices.factory('UserFactory', function ($resource) {
@@ -21,5 +21,17 @@ micksDemoServices.factory('UserFactory', function ($resource) {
             delete: { method: 'DELETE', params: {id: '@id', action: 'delete'} },
             query: { method: 'GET', isArray: true },
             create: { method: 'POST', params: {action: 'create'}}
+        })
+});
+
+/*******************************************************************************
+ * Factory - maps to role controller on back-end
+ ******************************************************************************/
+
+micksDemoServices.factory('RoleFactory', function ($resource) {
+    return $resource('/roles',
+        {},
+        {
+            query: { method: 'GET', isArray: true }
         })
 });

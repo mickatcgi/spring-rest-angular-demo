@@ -39,7 +39,7 @@ public class UserController {
     RepositoryService repositoryService = new DummyRepositoryServiceImpl();
 
     /***************************************************************
-     * Create some dummy users one time
+     * 
      ***************************************************************/
     public UserController() {
     }
