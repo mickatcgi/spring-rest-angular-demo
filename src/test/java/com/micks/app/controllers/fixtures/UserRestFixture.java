@@ -20,14 +20,18 @@ public class UserRestFixture {
         "\"user\" : { "
         + "\"id\" : 3, "
         + "\"firstName\" : \"FullMinkey\", "
-        + "\"lastName\" : \"FullBule\" } ";
+        + "\"lastName\" : \"FullBule\" , "
+        + "\"role\" : { \"id\" : 0 , \"description\" : \"Member\" } "
+        + " } ";
      
     private static String testUser = 
         "{ "
         + "\"id\" : 3, "
         + "\"firstName\" : \"TestMinkey\", "
-        + "\"lastName\" : \"TestBule\" } ";
-     
+        + "\"lastName\" : \"TestBule\", "
+        + "\"role\" : { \"id\" : 0 , \"description\" : \"Member\" } "
+        + " } ";
+    
     /************************************************************************
     * Method description...
     *
@@ -38,3 +42,5 @@ public class UserRestFixture {
     }
     
 }
+
+
