@@ -130,7 +130,7 @@ public class DummyRepositoryServiceImpl implements RepositoryService {
             User existingUser = this.userMap.get(user.getId());
             existingUser.setFirstName(user.getFirstName());
             existingUser.setLastName(user.getLastName());
-            existingUser.setRole(user.getRole());
+            existingUser.setRole(this.getRole(user.getRole().getId()));
             existingUser.setEnabled(user.isEnabled());
             log.info("MICK - update user = " + existingUser.toString());
         } else {

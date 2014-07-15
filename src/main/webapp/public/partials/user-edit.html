@@ -22,6 +22,14 @@
             </div>
         </div>
         <div class="control-group">
+            <label class="control-label" for="inputRole">Role:</label>
+
+            <div class="controls">
+                <select ng-model="user.role"
+                        ng-options="role.id as role.description for role in roles"></select><br>
+            </div>
+        </div>
+        <div class="control-group">
             <label class="control-label" for="inputEnabled">Enabled:</label>
 
             <div class="controls">

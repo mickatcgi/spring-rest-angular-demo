@@ -13,8 +13,8 @@
  *
  ***************************************************************************/
 micksDemoControllers.controller('UserController',
-    ['$scope', '$routeParams', 'UserFactory', '$location', '$route', '$timeout',
-        function ($scope, $routeParams, UserFactory, $location, $route, $timeout) {
+    ['$scope', '$routeParams', 'UserFactory', 'RoleFactory', '$location', '$route', '$timeout',
+        function ($scope, $routeParams, UserFactory, RoleFactory, $location, $route, $timeout) {
 
             // Lists all the users. Method invoked on page load from data-ng-init call
             $scope.listUsers = function () {
@@ -109,6 +109,7 @@ micksDemoControllers.controller('UserController',
             $scope.getUser = function () {
                 console.log("MICK - getUser() getting one user. id = " + $routeParams.id);
                 $scope.user = UserFactory.show({ id: $routeParams.id});
+                $scope.roles = RoleFactory.query();
             };
 
             // Cancels an edit or a show action
